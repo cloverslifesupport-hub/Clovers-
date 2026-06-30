@@ -4,19 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CloversLife INC</title>
+  <!-- Google Font: Montserrat para un look moderno -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
   <style>
     body { background-color: #000000 !important; color: #ffffff !important; margin: 0; padding: 20px; font-family: sans-serif; }
     .jewelry-card { max-width: 400px; margin: 0 auto; }
     
-    /* ESTILO COOL PARA EL NOMBRE */
+    /* NOMBRE ESTILO PREMIUM */
     .brand-badge { 
+        font-family: 'Montserrat', sans-serif;
         font-weight: 800; 
-        font-size: 22px; 
-        letter-spacing: 3px; /* Espaciado que lo hace ver premium */
+        font-size: 20px; 
+        letter-spacing: 4px; 
         margin-bottom: 20px; 
         text-transform: uppercase; 
         text-align: center;
-        font-family: 'Arial Black', sans-serif;
     }
     
     .main-product-img { width: 100%; border-radius: 8px; display: block; margin-bottom: 15px; }
@@ -49,12 +51,16 @@
     .summary-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; color: #aaa; }
     .total-row { display: flex; justify-content: space-between; font-weight: bold; font-size: 16px; margin-top: 10px; }
     button { width: 100%; background: #ffffff; color: #000000; border: none; padding: 18px; font-weight: bold; cursor: pointer; text-transform: uppercase; border-radius: 8px; margin-top: 15px; }
+
+    /* ESTILO CONTACTO FINAL */
+    .contact-section { margin-top: 30px; text-align: center; border-top: 1px solid #222; padding-top: 20px; color: #888; font-size: 13px; }
+    .contact-line { margin-bottom: 15px; }
+    .dm-link, .mail-link { color: #fff; text-decoration: none; font-weight: bold; }
   </style>
 </head>
 <body>
 
 <div class="jewelry-card">
-  <!-- NOMBRE ACTUALIZADO -->
   <div class="brand-badge">CLOVERSLIFE INC</div>
   
   <img src="https://i.ibb.co/zWPr8Q5b/IMG-7586.jpg" class="main-product-img">
@@ -120,6 +126,18 @@
     </div>
 
     <button type="button" onclick="submitAndPay()">CONFIRM & PAY VIA CASH APP</button>
+    
+    <!-- Bloque de contacto con mailto -->
+    <div class="contact-section">
+        <div class="contact-line">
+            Availability DM Here<br>
+            <a href="https://www.instagram.com/davidsantanno" target="_blank" class="dm-link">@davidsantanno</a>
+        </div>
+        <div class="contact-line">
+            Questions And Support<br>
+            <a href="mailto:cloverslifesupport@gmail.com" class="mail-link">cloverslifesupport@gmail.com</a>
+        </div>
+    </div>
   </form>
 </div>
 
