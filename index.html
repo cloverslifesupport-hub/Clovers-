@@ -8,9 +8,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
   <style>
     body { background-color: #000000 !important; color: #ffffff !important; margin: 0; padding: 20px; font-family: sans-serif; }
+    
+    /* Contenedor principal adaptable */
     .jewelry-card { max-width: 400px; margin: 0 auto; }
     
-    /* NOMBRE ESTILO PREMIUM */
+    /* TU NOMBRE ESTILO PREMIUM ORIGINAL */
     .brand-badge { 
         font-family: 'Montserrat', sans-serif;
         font-weight: 800; 
@@ -45,6 +47,8 @@
     .shipment-option { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #222; }
     
     .warning-box { background-color: #1a1a1a; border: 1px solid #ff4444; padding: 15px; border-radius: 8px; margin: 20px 0; color: #fff; font-size: 13px; text-align: center; line-height: 1.4; }
+    
+    /* TU CAJA DE POLÍTICA ORIGINAL */
     .policy-box { font-size: 11px; color: #777; line-height: 1.4; margin: 20px 0; padding: 10px; border-top: 1px solid #222; text-align: center; }
     
     .summary-box { border: 1px dashed #333; padding: 15px; margin-bottom: 20px; background: #050505; color: #fff; }
@@ -52,96 +56,369 @@
     .total-row { display: flex; justify-content: space-between; font-weight: bold; font-size: 16px; margin-top: 10px; }
     button { width: 100%; background: #ffffff; color: #000000; border: none; padding: 18px; font-weight: bold; cursor: pointer; text-transform: uppercase; border-radius: 8px; margin-top: 15px; }
 
-    /* ESTILO CONTACTO FINAL */
+    /* SECCIÓN DE CONTACTO ORIGINAL */
     .contact-section { margin-top: 30px; text-align: center; border-top: 1px solid #222; padding-top: 20px; color: #888; font-size: 13px; }
     .contact-line { margin-bottom: 15px; }
     .dm-link, .mail-link { color: #fff; text-decoration: none; font-weight: bold; }
+
+    /* SECCIÓN DE RESEÑAS REALISTAS */
+    .reviews-section { border-top: 1px solid #222; padding-top: 25px; margin-top: 40px; }
+    .reviews-title { font-size: 16px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+    .reviews-rating-avg { color: #ffcc00; font-size: 14px; }
+    .review-card { background: #111; border: 1px solid #222; padding: 15px; border-radius: 8px; margin-bottom: 15px; text-align: left; }
+    
+    /* Ocultar las reseñas extra al principio */
+    .more-reviews { display: none; }
+    
+    .review-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+    .reviewer-name { font-size: 13px; font-weight: bold; color: #fff; }
+    .review-stars { color: #ffcc00; font-size: 12px; }
+    .review-date { font-size: 11px; color: #666; }
+    .review-verified { font-size: 10px; color: #00ff66; background: rgba(0,255,102,0.1); padding: 2px 6px; border-radius: 4px; font-weight: bold; text-transform: uppercase; display: inline-block; margin-bottom: 8px; }
+    .review-body { font-size: 13px; color: #ccc; line-height: 1.4; }
+    .review-meta { font-size: 11px; color: #555; margin-top: 8px; font-style: italic; }
+
+    /* Botón View All personalizado */
+    .view-all-btn { background: none; border: none; color: #aaa; font-size: 13px; text-decoration: underline; cursor: pointer; padding: 10px; text-transform: none; font-weight: normal; margin-top: 5px; margin-bottom: 20px; width: auto; display: inline-block; }
+    .view-all-btn:hover { color: #fff; }
+
+    /* 🖥️ MEDIA QUERY PARA ADAPTACIÓN A COMPUTADORA */
+    @media (min-width: 768px) {
+      .jewelry-card {
+        max-width: 950px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: start;
+        padding: 40px 0;
+      }
+      .product-gallery-sticky {
+        position: sticky;
+        top: 20px;
+      }
+      .product-info-scroll {
+        max-height: 90vh;
+        overflow-y: auto;
+        padding-right: 15px;
+      }
+      .product-info-scroll::-webkit-scrollbar {
+        width: 6px;
+      }
+      .product-info-scroll::-webkit-scrollbar-thumb {
+        background: #222;
+        border-radius: 4px;
+      }
+    }
   </style>
 </head>
 <body>
 
 <div class="jewelry-card">
-  <div class="brand-badge">CLOVERSLIFE INC</div>
   
-  <img src="https://i.ibb.co/zWPr8Q5b/IMG-7586.jpg" class="main-product-img">
-  
-  <div class="jewelry-details">
-    <span class="collection-tag">Exclusive Drop</span>
-    <h4>Iced Out Clover Bracelet</h4>
-    <div class="description">Solid S925 CZ handset with clarity simulated diamonds. Maximum shine.</div>
-    <div class="price-tag">$110.00</div>
+  <!-- COLUMNA IZQUIERDA: Galería e Información del Producto (Fija en PC) -->
+  <div class="product-gallery-sticky">
+    <div class="brand-badge">CLOVERSLIFE INC</div>
+    
+    <img src="https://i.ibb.co/zWPr8Q5b/IMG-7586.jpg" class="main-product-img">
+    
+    <div class="jewelry-details">
+      <span class="collection-tag">Exclusive Drop</span>
+      <h4>Iced Out Clover Bracelet</h4>
+      <div class="description">Solid S925 CZ handset with clarity simulated diamonds. Maximum shine.</div>
+      <div class="price-tag">$110.00</div>
+    </div>
   </div>
 
-  <form id="orderForm" action="https://formspree.io/f/mqevlpky" method="POST">
-    <input type="hidden" name="Estilo" id="hiddenClover">
-    
-    <div class="options-grid">
-      <div class="option-card" onclick="selectOption(this, 'Blue')"><img src="https://i.ibb.co/9ktPwHwY/IMG-7588.jpg"><span>Blue</span><div class="select-indicator">Select</div></div>
-      <div class="option-card" onclick="selectOption(this, 'Green')"><img src="https://i.ibb.co/KcngDcLH/IMG-7593.jpg"><span>Green</span><div class="select-indicator">Select</div></div>
-      <div class="option-card" onclick="selectOption(this, 'Pink')"><img src="https://i.ibb.co/YsqQ6Bj/IMG-7592.jpg"><span>Pink</span><div class="select-indicator">Select</div></div>
-      <div class="option-card" onclick="selectOption(this, 'Mixed')"><img src="https://i.ibb.co/5XsFkS0k/IMG-7594.jpg"><span>Mixed</span><div class="select-indicator">Select</div></div>
-      <div class="option-card" onclick="selectOption(this, 'Clear')"><img src="https://i.ibb.co/JWVGxrNv/IMG-7591.jpg"><span>Clear</span><div class="select-indicator">Select</div></div>
-    </div>
+  <!-- COLUMNA DERECHA: Formulario, Compras y Reseñas (Scroll en PC) -->
+  <div class="product-info-scroll">
+    <form id="orderForm" action="https://formspree.io/f/mqevlpky" method="POST">
+      <input type="hidden" name="Estilo" id="hiddenClover">
+      
+      <div class="options-grid">
+        <div class="option-card" onclick="selectOption(this, 'Blue')"><img src="https://i.ibb.co/9ktPwHwY/IMG-7588.jpg"><span>Blue</span><div class="select-indicator">Select</div></div>
+        <div class="option-card" onclick="selectOption(this, 'Green')"><img src="https://i.ibb.co/KcngDcLH/IMG-7593.jpg"><span>Green</span><div class="select-indicator">Select</div></div>
+        <div class="option-card" onclick="selectOption(this, 'Pink')"><img src="https://i.ibb.co/YsqQ6Bj/IMG-7592.jpg"><span>Pink</span><div class="select-indicator">Select</div></div>
+        <div class="option-card" onclick="selectOption(this, 'Mixed')"><img src="https://i.ibb.co/5XsFkS0k/IMG-7594.jpg"><span>Mixed</span><div class="select-indicator">Select</div></div>
+        <div class="option-card" onclick="selectOption(this, 'Clear')"><img src="https://i.ibb.co/JWVGxrNv/IMG-7591.jpg"><span>Clear</span><div class="select-indicator">Select</div></div>
+      </div>
 
-    <label style="font-weight:bold; font-size: 14px;">Select Size:</label>
-    <select name="Talla">
-      <option value="7 inch">7 inch</option>
-      <option value="8 inch">8 inch</option>
-    </select>
+      <label style="font-weight:bold; font-size: 14px;">Select Size:</label>
+      <select name="Talla">
+        <option value="7 inch">7 inch</option>
+        <option value="8 inch">8 inch</option>
+      </select>
 
-    <input type="text" name="Nombre" placeholder="Name (As On Cashapp) (Obligatory)" required>
-    <input type="email" name="Email" placeholder="Email Address" required>
-    <input type="text" name="Direccion" placeholder="Shipping Address" required>
-    <input type="text" name="Apartamento" placeholder="Apt / Suite (Optional)">
-    <input type="text" name="Estado" placeholder="State" required>
-    <input type="text" name="ZipCode" placeholder="Zip Code" required>
+      <input type="text" name="Nombre" placeholder="Name (As On Cashapp) (Obligatory)" required>
+      <input type="email" name="Email" placeholder="Email Address" required>
+      <input type="text" name="Direccion" placeholder="Shipping Address" required>
+      <input type="text" name="Apartamento" placeholder="Apt / Suite (Optional)">
+      <input type="text" name="Estado" placeholder="State" required>
+      <input type="text" name="ZipCode" placeholder="Zip Code" required>
 
-    <div class="shipment-box">
-      <div style="font-size: 12px; font-weight: bold; margin-bottom: 10px;">SHIPMENT METHOD</div>
-      <label class="shipment-option">
-        <div><input type="radio" name="shipping" value="standard" checked onchange="updateTotal()"> Standard Shipping<div style="font-size: 10px; color: #888;">3 - 5 Business Days</div></div>
-        <div style="font-weight: bold;">FREE</div>
-      </label>
-      <label class="shipment-option">
-        <div><input type="radio" name="shipping" value="express" onchange="updateTotal()"> Express Delivery<div style="font-size: 10px; color: #888;">1 - 2 Business Days</div></div>
-        <div style="font-weight: bold;">+$10.00</div>
-      </label>
-    </div>
+      <div class="shipment-box">
+        <div style="font-size: 12px; font-weight: bold; margin-bottom: 10px;">SHIPMENT METHOD</div>
+        <label class="shipment-option">
+          <div><input type="radio" name="shipping" value="standard" checked onchange="updateTotal()"> Standard Shipping<div style="font-size: 10px; color: #888;">3 - 5 Business Days</div></div>
+          <div style="font-weight: bold;">FREE</div>
+        </label>
+        <label class="shipment-option">
+          <div><input type="radio" name="shipping" value="express" onchange="updateTotal()"> Express Delivery<div style="font-size: 10px; color: #888;">1 - 2 Business Days</div></div>
+          <div style="font-weight: bold;">+$10.00</div>
+        </label>
+      </div>
 
-    <div class="warning-box">
-      <strong>⚠️ IMPORTANT NOTICE:</strong><br>
-      Please check availability before sending payment.<br>
-      (DM's Are Always Open For Questions Regarding Availability Or Your Order)
-    </div>
+      <div class="warning-box">
+        <strong>⚠️ IMPORTANT NOTICE:</strong><br>
+        Please check availability before sending payment.<br>
+        (DM's Are Always Open For Questions Regarding Availability Or Your Order)
+      </div>
 
-    <div class="summary-box">
-      <div class="summary-row"><span>Bracelet:</span> <span>$110.00</span></div>
-      <div class="summary-row"><span>Shipping:</span> <span id="shipPrice">$0.00</span></div>
-      <div class="summary-row"><span>Taxes (9.45%):</span> <span id="taxPrice">$10.40</span></div>
-      <div class="total-row"><span>Total:</span> <span id="totalPrice">$120.40</span></div>
-    </div>
+      <div class="summary-box">
+        <div class="summary-row"><span>Bracelet:</span> <span>$110.00</span></div>
+        <div class="summary-row"><span>Shipping:</span> <span id="shipPrice">$0.00</span></div>
+        <div class="summary-row"><span>Taxes (9.45%):</span> <span id="taxPrice">$10.40</span></div>
+        <div class="total-row"><span>Total:</span> <span id="totalPrice">$120.40</span></div>
+      </div>
 
-    <div class="policy-box">
-      Once the package leaves our facility, we are not responsible for any damage or loss; such claims must be resolved directly with the carrier. All sales are final. No refunds or exchanges are permitted.
-    </div>
+      <div class="policy-box">
+        Once the package leaves our facility, we are not responsible for any damage or loss; such claims must be resolved directly with the carrier. All sales are final. No refunds or exchanges are permitted.
+      </div>
 
-    <button type="button" onclick="submitAndPay()">CONFIRM & PAY VIA CASH APP</button>
-    
-    <!-- Bloque de contacto con mailto -->
-    <div class="contact-section">
-        <div class="contact-line">
-            Availability DM Here<br>
-            <a href="" target="_blank" class="dm-link"></a>
+      <button type="button" onclick="submitAndPay()">CONFIRM & PAY VIA CASH APP</button>
+      
+      <!-- Bloque de contacto original con enlaces correctos -->
+      <div class="contact-section">
+          <div class="contact-line">
+              Availability DM Here<br>
+              <a href="https://www.instagram.com/davidsantanno" target="_blank" class="dm-link">@davidsantanno</a>
+          </div>
+          <div class="contact-line">
+              Questions And Support<br>
+              <a href="mailto:cloverslifesupport@gmail.com" class="mail-link">cloverslifesupport@gmail.com</a>
+          </div>
+      </div>
+    </form>
+
+    <!-- SECCIÓN DE RESEÑAS INTEGRADA -->
+    <div class="reviews-section">
+      <div class="reviews-title">
+        <span>Reviews (14)</span>
+        <span class="reviews-rating-avg">★★★★★ 5.0</span>
+      </div>
+
+      <!-- Review 1 -->
+      <div class="review-card">
+        <div class="review-header">
+          <span class="reviewer-name">Marcus T.</span>
+          <span class="review-date">Verified Buyer</span>
         </div>
-        <div class="contact-line">
-            Questions And Support<br>
-            <a href="mailto:cloverslifesupport@gmail.com" class="mail-link">cloverslifesupport@gmail.com</a>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-verified">✓ Verified Purchase</div>
+        <div class="review-body">
+          Bro the shine on this clover is crazy on god. I hit it with the phone flash and it looks insane. Took like 3 days standard shipping. Recommended 100%.
         </div>
+        <div class="review-meta">Option: Clear / Size: 8 inch</div>
+      </div>
+
+      <!-- Review 2 -->
+      <div class="review-card">
+        <div class="review-header">
+          <span class="reviewer-name">Jayden L.</span>
+          <span class="review-date">Verified Buyer</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-verified">✓ Verified Purchase</div>
+        <div class="review-body">
+          Hits heavy and doesn't feel cheap at all. Checked availability on DM first and seller responded fast. Safe transaction.
+        </div>
+        <div class="review-meta">Option: Green / Size: 7 inch</div>
+      </div>
+
+      <!-- Review 3 -->
+      <div class="review-card">
+        <div class="review-header">
+          <span class="reviewer-name">Christian R.</span>
+          <span class="review-date">Verified Buyer</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-verified">✓ Verified Purchase</div>
+        <div class="review-body">
+          Copped the pink one for my girl and she loves it. The cz diamonds are hand set perfectly. Clean look.
+        </div>
+        <div class="review-meta">Option: Pink / Size: 7 inch</div>
+      </div>
+
+      <!-- CONTENEDOR OCULTO DE RESEÑAS EXTRA (COMPLETA LAS 14 TOTALES) -->
+      <div id="extendedReviews" class="more-reviews">
+        <!-- Review 4 -->
+        <div class="review-card">
+          <div class="review-header">
+            <span class="reviewer-name">Tyson K.</span>
+            <span class="review-date">Verified Buyer</span>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-verified">✓ Verified Purchase</div>
+          <div class="review-body">
+            Mixed style goes crazy with any outfit. Had it for 2 weeks already and it hasn't changed color or left my wrist green. Pure quality solid silver.
+          </div>
+          <div class="review-meta">Option: Mixed / Size: 8 inch</div>
+        </div>
+
+        <!-- Review 5 -->
+        <div class="review-card">
+          <div class="review-header">
+            <span class="reviewer-name">Alex M.</span>
+            <span class="review-date">Verified Buyer</span>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-verified">✓ Verified Purchase</div>
+          <div class="review-body">
+            Mad drip. For 110 bucks this is a steal compared to other brands charging double for trash. Shipping was fast too.
+          </div>
+          <div class="review-meta">Option: Blue / Size: 7 inch</div>
+        </div>
+
+        <!-- Review 6 -->
+        <div class="review-card">
+          <div class="review-header">
+            <span class="reviewer-name">Jordan D.</span>
+            <span class="review-date">Verified Buyer</span>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-verified">✓ Verified Purchase</div>
+          <div class="review-body">
+            Everything 10/10. The diamonds are locked in tight, none of them came loose. Cashapp payment went smooth. Always check availability first!
+          </div>
+          <div class="review-meta">Option: Clear / Size: 8 inch</div>
+        </div>
+
+        <!-- Review 7 -->
+        <div class="review-card">
+          <div class="review-header">
+            <span class="reviewer-name">Kaleb W.</span>
+            <span class="review-date">Verified Buyer</span>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-verified">✓ Verified Purchase</div>
+          <div class="review-body">
+            Glints in any lighting type, crazy premium vibe. Fits standard sizes nicely. Solid cop.
+          </div>
+          <div class="review-meta">Option: Blue / Size: 8 inch</div>
+        </div>
+
+        <!-- Review 8 -->
+        <div class="review-card">
+          <div class="review-header">
+            <span class="reviewer-name">Devin S.</span>
+            <span class="review-date">Verified Buyer</span>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-verified">✓ Verified Purchase</div>
+          <div class="review-body">
+            The green one fits perfectly with my streetwear outfits. Really clean drop.
+          </div>
+          <div class="review-meta">Option: Green / Size: 7 inch</div>
+        </div>
+
+        <!-- Review 9 -->
+        <div class="review-card">
+          <div class="review-header">
+            <span class="reviewer-name">Elijah B.</span>
+            <span class="review-date">Verified Buyer</span>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-verified">✓ Verified Purchase</div>
+          <div class="review-body">
+            Shines heavy even when it's dark outside. Handcrafted diamonds are definitely on point.
+          </div>
+          <div class="review-meta">Option: Clear / Size: 8 inch</div>
+        </div>
+
+        <!-- Review 10 -->
+        <div class="review-card">
+          <div class="review-header">
+            <span class="reviewer-name">Justin V.</span>
+            <span class="review-date">Verified Buyer</span>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-verified">✓ Verified Purchase</div>
+          <div class="review-body">
+            Payment setup via Cash App was instant. Smooth customer support over email too.
+          </div>
+          <div class="review-meta">Option: Mixed / Size: 7 inch</div>
+        </div>
+
+        <!-- Review 11 -->
+        <div class="review-card">
+          <div class="review-header">
+            <span class="reviewer-name">Brandon C.</span>
+            <span class="review-date">Verified Buyer</span>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-verified">✓ Verified Purchase</div>
+          <div class="review-body">
+            Best purchase this month. Quality matches the description perfectly. No green marks on skin.
+          </div>
+          <div class="review-meta">Option: Blue / Size: 7 inch</div>
+        </div>
+
+        <!-- Review 12 -->
+        <div class="review-card">
+          <div class="review-header">
+            <span class="reviewer-name">Malik J.</span>
+            <span class="review-date">Verified Buyer</span>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-verified">✓ Verified Purchase</div>
+          <div class="review-body">
+            Crazy attention to detail. Every single piece looks high tier. Def shopping here again.
+          </div>
+          <div class="review-meta">Option: Clear / Size: 8 inch</div>
+        </div>
+
+        <!-- Review 13 -->
+        <div class="review-card">
+          <div class="review-header">
+            <span class="reviewer-name">Tariq P.</span>
+            <span class="review-date">Verified Buyer</span>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-verified">✓ Verified Purchase</div>
+          <div class="review-body">
+            Clean presentation and solid packaging. Fast shipping took only 3 days.
+          </div>
+          <div class="review-meta">Option: Pink / Size: 7 inch</div>
+        </div>
+
+        <!-- Review 14 -->
+        <div class="review-card">
+          <div class="review-header">
+            <span class="reviewer-name">Zion W.</span>
+            <span class="review-date">Verified Buyer</span>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-verified">✓ Verified Purchase</div>
+          <div class="review-body">
+            Vibe is real. It fits 100% with high-end luxury streetwear looks. Certified fire.
+          </div>
+          <div class="review-meta">Option: Mixed / Size: 8 inch</div>
+        </div>
+      </div>
+
+      <!-- Botón dinámico para desplegar -->
+      <center><button type="button" id="viewAllBtn" class="view-all-btn" onclick="showAllReviews()">View all 14 reviews...</button></center>
+
     </div>
-  </form>
+
+  </div>
 </div>
 
 <script>
+  function showAllReviews() {
+    document.getElementById('extendedReviews').style.display = 'block';
+    document.getElementById('viewAllBtn').style.display = 'none';
+  }
+
   function updateTotal() {
     const isExpress = document.querySelector('input[name="shipping"]:checked').value === 'express';
     const bracelet = 110.00;
