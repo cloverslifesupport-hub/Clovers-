@@ -131,9 +131,8 @@
 
   <!-- COLUMNA DERECHA: Formulario, Compras y Reseñas (Scroll en PC) -->
   <div class="product-info-scroll">
-    <form id="orderForm" action="https://formspree.io/f/mqevlpky" method="POST">
       <input type="hidden" name="Estilo" id="hiddenClover">
-      
+      <form id="orderForm">
       <div class="options-grid">
         <div class="option-card" onclick="selectOption(this, 'Blue')"><img src="https://i.ibb.co/9ktPwHwY/IMG-7588.jpg"><span>Blue</span><div class="select-indicator">Select</div></div>
         <div class="option-card" onclick="selectOption(this, 'Green')"><img src="https://i.ibb.co/KcngDcLH/IMG-7593.jpg"><span>Green</span><div class="select-indicator">Select</div></div>
@@ -438,48 +437,24 @@
     document.getElementById('hiddenClover').value = name;
   }
   
-  function submitAndPay() {
+  async function submitAndPay() {
     const style = document.getElementById('hiddenClover').value;
     if(!style) { alert("Please select a style!"); return; }
+
+    // Inicializa aquí con tus datos de Supabase
+    const supabase = supabase.createClient('https://jcixophjgzvzrixjowfc.supabase.co', 'sb_publishable_CoZo2p09QGtbOevb6r20HQ_m4Y74D4v');
+
+    // Envía el formulario a Supabase
+    const form = document.getElementById('orderForm');
+    const formData = new FormData(form);
     
-    document.getElementById('orderForm').submit();
-    setTimeout(() => {
-        window.open("https://cash.app/$Nemzzz0", "_blank");
-    }, 500);
-  }
-</script>
-
-</body>
-</html>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-  // 1. Inicializa Supabase (pon aquí tus credenciales)
-  const supabase = supabase.createClient('TU_URL_DE_SUPABASE', 'TU_KEY_DE_SUPABASE');
-
-  async function submitAndPay() {
-    const estilo = document.getElementById('hiddenClover').value;
-    const nombre = document.querySelector('input[name="Nombre"]').value;
-    const email = document.querySelector('input[name="Email"]').value;
-    const direccion = document.querySelector('input[name="Direccion"]').value;
-    const talla = document.querySelector('select[name="Talla"]').value;
-    const total = document.getElementById('totalPrice').innerText;
-
-    if(!estilo || !nombre || !email || !direccion) {
-        alert("Please select a style and fill in your details!");
-        return;
-    }
-
-    // 2. Guardar en Supabase
-    const { error } = await supabase.from('ordenes').insert([{
-        nombre, email, direccion, estilo, talla, total
+    // Aquí se guardan los datos en la tabla 'pedidos'
+    await supabase.from('pedidos').insert([{
+        nombre: formData.get('Nombre'),
+        estilo: style,
+        total: document.getElementById('totalPrice').innerText
     }]);
 
-    if(error) {
-        alert("Error: " + error.message);
-    } else {
-        // 3. Si se guarda, abre CashApp
-        window.open("https://cash.app/$Nemzzz0", "_blank");
-        alert("Order saved! Proceeding to payment.");
-    }
-  }
-</script>
+    // Redirección a pago
+    window.open("https://cash.app/$Nemzzz0", "_blank");
+}
