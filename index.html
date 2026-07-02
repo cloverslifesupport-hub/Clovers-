@@ -451,3 +451,35 @@
 
 </body>
 </html>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  // 1. Inicializa Supabase (pon aquí tus credenciales)
+  const supabase = supabase.createClient('TU_URL_DE_SUPABASE', 'TU_KEY_DE_SUPABASE');
+
+  async function submitAndPay() {
+    const estilo = document.getElementById('hiddenClover').value;
+    const nombre = document.querySelector('input[name="Nombre"]').value;
+    const email = document.querySelector('input[name="Email"]').value;
+    const direccion = document.querySelector('input[name="Direccion"]').value;
+    const talla = document.querySelector('select[name="Talla"]').value;
+    const total = document.getElementById('totalPrice').innerText;
+
+    if(!estilo || !nombre || !email || !direccion) {
+        alert("Please select a style and fill in your details!");
+        return;
+    }
+
+    // 2. Guardar en Supabase
+    const { error } = await supabase.from('ordenes').insert([{
+        nombre, email, direccion, estilo, talla, total
+    }]);
+
+    if(error) {
+        alert("Error: " + error.message);
+    } else {
+        // 3. Si se guarda, abre CashApp
+        window.open("https://cash.app/$Nemzzz0", "_blank");
+        alert("Order saved! Proceeding to payment.");
+    }
+  }
+</script>
